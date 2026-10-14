@@ -52,7 +52,7 @@ export const getCharactersPage = async (
 // Trae los primeros `count` personajes DE UNA SOLA VEZ.
 // Lo usamos en ScrollView, que necesita todos los datos para renderizar.
 export const getCharactersByCount = async (count: number): Promise<Character[]> => {
-  const ids = Array.from({ length: count }, (_, i) => i + 1).join(',');
+  const ids = Array.from({ length: count }, (_, i) => i + 1).join(','); 
   const response = await fetchWithRetry(`${BASE_URL}/${ids}`);
   if (!response.ok) {
     throw new Error(`Error ${response.status} al cargar ${count} personajes`);

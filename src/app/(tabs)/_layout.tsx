@@ -24,8 +24,8 @@ const TabsLayout = () => {
               ios: 'list.bullet',
               android: 'format_list_bulleted',
             }}
-            tintColor = {'green'}
-            size = {28}
+            tintColor = {color}
+            size = {size}
           />
         )
         }}/>
@@ -39,8 +39,8 @@ const TabsLayout = () => {
               ios: 'scroll',
               android: 'swipe_vertical',
             }}
-            tintColor = {'green'}
-            size = {28}
+            tintColor = {color}
+            size = {size}
           />
         ) }}/>
     </Tabs>
