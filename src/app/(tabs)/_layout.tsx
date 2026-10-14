@@ -1,15 +1,17 @@
 import { Tabs } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
-
+import { colors } from '../../theme/colors'
 const TabsLayout = () => {
   return (
     <Tabs
      screenOptions={{
-        headerStyle: { backgroundColor: 'black' },
-        headerTintColor: 'white',
-        sceneStyle: { backgroundColor: 'tomato' },
-        tabBarStyle: { backgroundColor: 'black' },
-        tabBarActiveTintColor: '#fff',
+        headerStyle: { backgroundColor: colors.background },
+        headerTintColor: colors.text,
+        headerShadowVisible: false,
+        sceneStyle: { backgroundColor: colors.background },
+        tabBarStyle: { backgroundColor: colors.card, borderTopColor: colors.border },
+        tabBarActiveTintColor: colors.textSoft,
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '600' },
       }}
     >
       <Tabs.Screen 
