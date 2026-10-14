@@ -16,6 +16,8 @@ const FlatListScreen = () => {
               data={characters}
               keyExtractor={(item) => String(item.id)}
               renderItem={({ item }) => <CharacterCard character={item} />}
+              contentContainerStyle={{ padding: 16, gap: 20 }}
+              ListEmptyComponent={<Text>Cargando...</Text>}
               />
         </SafeAreaView>
     )
