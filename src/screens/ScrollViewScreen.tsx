@@ -1,34 +1,22 @@
-import { Text } from "react-native";
+import { Text, ScrollView, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState, useEffect } from "react";
-import { getCharactersByCount, type Character } from "../api/rickAndMorty";
+import { useCharacters } from "../hooks/useCharacters";
 
 const CHARACTERS_COUNT = 100;
 const ScrollViewScreen = () => {
-
-  const [characters, setCharacters] = useState<Character[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  useEffect(() => {
-    // flag para evitar actualizar el estado si el componente se desmonta antes de que termine la petición
-    let isActive = true;
-    getCharactersByCount(CHARACTERS_COUNT).then((results) => {
-      // Solo actualizamos el estado si el componente sigue montado
-      if (isActive) setCharacters(results);
-      
-    }).catch((error: unknown) => {
-      console.error(error);
-      if (isActive) setErrorMessage("Error al cargar los personajes");
-    });
-
-    // funcion de limpieza que se ejecuta al desmontar el componente
-    return () => {
-      isActive = false;
-    }
-    },[]);
+  const { characters, isLoading, errorMessage, retry } = useCharacters(CHARACTERS_COUNT);
   return (
-    <SafeAreaView>
-      <Text>Scroll ejemplo</Text>
-    </SafeAreaView>
+    <>
+    <ScrollView>
+      {characters.map((character) => (
+        <Text key={character.id}>{character.name}</Text>
+      ))}
+    </ScrollView>
+    <Pressable>
+      <Text>HACER CLICK PARA REINTENTAR</Text>
+    </Pressable>
+    </>
   )
 }
 
